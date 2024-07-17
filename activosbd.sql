@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-07-2024 a las 21:51:59
+-- Tiempo de generación: 17-07-2024 a las 22:10:05
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 7.4.33
 
@@ -48,10 +48,12 @@ INSERT INTO `actividades` (`idactividades`, `actividad`, `fecha`, `kg`, `materia
 (5, 'gggg', '2024-07-12', 3232, 'TEJOS 316', 'MONDELEZ', 340, 5, 40),
 (6, 'ddfff', '2024-07-12', 444, 'TEJOS 316', 'MONDELEZ', 345, 5, 45),
 (7, 'fff', '2024-07-12', 3334340000, 'TEJOS 316', 'MONDELEZ', 405, 6, 45),
-(8, 'dfvdfvdf', '2024-07-12', 23322, 'ALMACÉN 1', 'FISHER', 122, 2, 2),
+(8, 'dfvdfvdf', '2024-07-12', 23322, 'ALMACÉN 1', 'FISHER', 182, 3, 2),
 (9, 'ggggg', '2024-07-12', 344343, 'TEJOS 316', 'MONDELEZ', 366, 7, 7),
 (10, 'Probando solo minutos en una actividad', '2024-07-15', 2024, '2024', '1', 50, 0, 50),
-(11, 'Minutos', '2024-07-15', 1, 'ALMACÉN 1', 'MONDELEZ', 45, 0, 45);
+(11, 'Minutos', '2024-07-15', 1, 'ALMACÉN 1', 'MONDELEZ', 45, 0, 45),
+(12, 'Recolectar cartón ', '2024-07-15', 80, 'ALMACÉN 1', 'MONDELEZ', 600, 10, 0),
+(13, 'APLASTAR CARTÓN', '2024-07-15', 60, 'TEJOS 316', 'FISHER', 390, 6, 30);
 
 -- --------------------------------------------------------
 
@@ -70,20 +72,12 @@ CREATE TABLE `activosfijos` (
 --
 
 INSERT INTO `activosfijos` (`idActfijos`, `folioActivo`, `Fcreacion`) VALUES
-(145, '11072401', '2024-07-11'),
-(146, '11072402', '2024-07-11'),
-(147, '11072403', '2024-07-11'),
-(148, '11072404', '2024-07-11'),
-(149, '11072405', '2024-07-11'),
-(150, '11072406', '2024-07-11'),
-(151, '11072407', '2024-07-11'),
-(152, '11072408', '2024-07-11'),
-(153, '11072409', '2024-07-11'),
-(154, '11072410', '2024-07-11'),
-(155, '11072411', '2024-07-11'),
-(156, '11072412', '2024-07-11'),
-(157, '11072413', '2024-07-11'),
-(158, '11072414', '2024-07-11');
+(164, '16072401', '2024-07-16'),
+(165, '16072402', '2024-07-16'),
+(166, '16072403', '2024-07-16'),
+(167, '16072404', '2024-07-16'),
+(168, '16072405', '2024-07-16'),
+(169, '17072401', '2024-07-17');
 
 -- --------------------------------------------------------
 
@@ -206,13 +200,12 @@ CREATE TABLE `insumos` (
 --
 
 INSERT INTO `insumos` (`IdInsumos`, `folioInsumos`, `F_creacion`, `tipoAct`, `F_alta`, `descrip`, `proveedor`, `folioOC`, `monto`, `F_adqui`, `Numserie`) VALUES
-(57, '11072404', '2024-07-11', 'VEHÍCULOS', '2024-07-11', 'Holaaaa', 'yyyyyy', '44444444', '44444', '2024-07-11', 'g4554'),
-(58, '11072405', '2024-07-11', 'VEHÍCULOS', '2024-07-11', 'vehiculo 11072405', 'rrrrrrrrrrrrrrr', '3333333333', '33333333', '2024-07-11', '333333333333'),
-(59, '11072406', '2024-07-11', 'MONTACARGAS', '2024-07-11', '11072406MONTACARGAS', 'r4rvfrv', '4333333', '333333', '2024-07-11', '434232'),
-(60, '11072407', '2024-07-11', 'MAQUINARIA', '2024-07-11', 'fdddddddddddddd', 'ggfffffffffffff', 'e4444444444444', '343', '2024-07-11', '333232332'),
-(61, '11072408', '2024-07-11', 'HERRAMIENTA', '2024-07-11', 'fdddddddddd', 'ggggggg', '3344', '33434', '2024-07-11', '34343'),
-(62, '11072409', '2024-07-11', 'VEHÍCULOS', '2024-07-11', 'fddddddddd', 'ggggggggg', '44555', '445', '2024-07-11', 'e434443'),
-(63, '11072411', '2024-07-11', 'VEHÍCULOS', '2024-07-11', 'asd', 's.a', '5010as', '5000', '2024-07-11', '13243da');
+(69, '16072401', '2024-07-16', 'VEHÍCULOS', '2024-07-16', 'gfgfgfg', 'Ejemplo1', '5555', '4444', '2024-07-16', '444444'),
+(70, '16072402', '2024-07-16', 'HERRAMIENTA', '2024-07-16', '5555555555555', 'Ejemplo1', '5555', '5555', '2024-07-16', '55555'),
+(71, '16072403', '2024-07-16', 'MONTACARGAS', '2024-07-24', 'ffdfdfd', 'Ejemplo1', '7', '5', '2024-07-18', '6'),
+(72, '16072404', '2024-07-16', 'MONTACARGAS', '2024-07-16', 'Holaaa probando la funcionalidad de registro de informacion en la tabla de insumos', 'Ejemplo1', '99999', '45', '2024-07-16', '45'),
+(73, '16072405', '2024-07-16', 'MAQUINARIA', '2024-07-16', 'probando', 'Ejemplo2', '3334444545', '5456565', '2024-07-16', '5667y'),
+(74, '17072401', '2024-07-17', 'VEHÍCULOS', '2024-07-17', 'gvrfgbrg', 'Ejemplo2', 'ttttt', '767', '2024-07-17', '4545');
 
 -- --------------------------------------------------------
 
@@ -260,17 +253,49 @@ CREATE TABLE `mantenimiento` (
 --
 
 INSERT INTO `mantenimiento` (`idMantenimiento`, `folioMant`, `falta`, `fabricacion`, `tipoAct`, `modelo`, `capacidad`, `clasificacion`, `nmotor`, `tipocontmate`, `especificacion`, `marca`, `descripadi`, `descripgen`, `idubicacion`) VALUES
-(76, '11072402', '2024-07-11', 'NA', 'INFRAESTRUCTURA', 'NA', 'NA', 'B', 'NA', 'NA', 'NA', 'NA', 'GGGG', 'HOLAAAA', 'BAÑOS 2'),
-(77, '11072403', '2024-07-11', 'NA', 'INFRAESTRUCTURA', 'NA', 'NA', 'B', 'NA', 'NA', 'NA', 'NA', 'hhhhh', 'hhhhh', 'Oficina de TIC'),
-(78, '11072404', '2024-07-11', 'NA', 'NA', 'fefdcw34', 'NA', 'B', '24343', 'NA', 'NA', 'NA', 'NA', 'NA', 'BAÑOS 2'),
-(79, '11072405', '2024-07-11', 'NA', 'NA', 'dddd', 'NA', 'B', '3333', 'NA', 'NA', 'NA', 'NA', 'NA', 'Baños de CH'),
-(80, '11072406', '2024-07-11', 'NA', 'NA', 'gggggg', '873 x 873', 'B', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'Oficina de TIC'),
-(81, '11072410', '2024-07-11', '2024-07-17', 'EQUIPOS DE CONTENCIÓN', 'NA', 'gggg', 'B', 'NA', 'ESPECIAL/OTRO', 'OTRO', 'NA', 'NA', 'gggg', 'Oficina de TIC'),
-(82, '11072412', '2024-07-11', 'NA', 'INFRAESTRUCTURA', 'NA', 'NA', 'B', 'NA', 'NA', 'NA', 'NA', 'asdsad', 'asd', 'Oficina de TIC'),
-(83, '11072413', '2024-07-11', '2024-07-11', 'EQUIPOS PARA MANEJO DE MATERIALES', 'NA', 'asd', 'B', 'NA', 'BASCULANTE/GÓNDOLA', 'DRENAJES', 'NA', 'NA', 'dasd', 'Baños de CH'),
-(84, '11072411', '2024-07-11', 'NA', 'VEHÍCULOS', 'asda', 'NA', 'B', 'dasdas', 'NA', 'NA', 'NA', 'NA', 'NA', 'Oficina de TIC'),
-(85, '11072407', '2024-07-11', 'NA', 'MAQUINARIA', 'sd', 'fsdfsd', 'B', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'BAÑOS 2'),
-(86, '11072414', '2024-07-11', '2024-07-11', 'EQUIPOS DE CONTENCIÓN', 'NA', '50', 'B', 'NA', 'CARRO TRANSPORTADOR', 'TAPAS/CUBIERTAS', 'NA', 'NA', 'qwe', 'Oficina de TIC');
+(89, '16072404', '2024-07-16', 'NA', 'MONTACARGAS', 'gggg', '34x84', 'B', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'TENNECO'),
+(90, '16072406', '2024-07-16', 'NA', 'MAQUINARIA', 'gggg', 'ggggg', 'B', 'NA', 'NA', 'NA', 'NA', 'NA', 'gggg', 'MONDELEZ'),
+(91, '17072401', '2024-07-17', 'NA', 'MAQUINARIA', 'ggg', 'ggg', 'B', 'NA', 'NA', 'NA', 'NA', 'NA', 'gggg', 'MONDELEZ'),
+(92, '16072405', '2024-07-17', 'NA', 'MAQUINARIA', 'gggg', '34x59', 'B', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'MONDELEZ');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `proveedores`
+--
+
+CREATE TABLE `proveedores` (
+  `idproveedor` int(11) NOT NULL,
+  `foliorpm` varchar(100) NOT NULL,
+  `fecha` varchar(20) NOT NULL,
+  `nombre` varchar(250) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `movil` varchar(50) NOT NULL,
+  `tel` varchar(30) NOT NULL,
+  `rsocial` varchar(100) NOT NULL,
+  `rfc` varchar(20) NOT NULL,
+  `rfiscal` varchar(50) NOT NULL,
+  `cfdi` varchar(100) NOT NULL,
+  `fpago` varchar(50) NOT NULL,
+  `calle` varchar(100) NOT NULL,
+  `next` varchar(50) NOT NULL,
+  `colonia` varchar(100) NOT NULL,
+  `ninten` varchar(50) NOT NULL,
+  `municipio` varchar(100) NOT NULL,
+  `ciudad` varchar(100) NOT NULL,
+  `cpostal` int(50) NOT NULL,
+  `cnombre` varchar(100) NOT NULL,
+  `cemail` varchar(100) NOT NULL,
+  `cmovil` varchar(50) NOT NULL,
+  `ctel` varchar(50) NOT NULL,
+  `beneficiario` varchar(100) NOT NULL,
+  `nombanco` varchar(100) NOT NULL,
+  `clabe` varchar(50) NOT NULL,
+  `cuenta` varchar(100) NOT NULL,
+  `refpago` varchar(100) NOT NULL,
+  `credito` varchar(10) NOT NULL,
+  `cdias` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -471,6 +496,12 @@ ALTER TABLE `mantenimiento`
   ADD PRIMARY KEY (`idMantenimiento`);
 
 --
+-- Indices de la tabla `proveedores`
+--
+ALTER TABLE `proveedores`
+  ADD PRIMARY KEY (`idproveedor`);
+
+--
 -- Indices de la tabla `respuesta`
 --
 ALTER TABLE `respuesta`
@@ -502,13 +533,13 @@ ALTER TABLE `unidad`
 -- AUTO_INCREMENT de la tabla `actividades`
 --
 ALTER TABLE `actividades`
-  MODIFY `idactividades` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idactividades` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `activosfijos`
 --
 ALTER TABLE `activosfijos`
-  MODIFY `idActfijos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
+  MODIFY `idActfijos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=170;
 
 --
 -- AUTO_INCREMENT de la tabla `consumibles`
@@ -526,13 +557,19 @@ ALTER TABLE `forms`
 -- AUTO_INCREMENT de la tabla `insumos`
 --
 ALTER TABLE `insumos`
-  MODIFY `IdInsumos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `IdInsumos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT de la tabla `mantenimiento`
 --
 ALTER TABLE `mantenimiento`
-  MODIFY `idMantenimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `idMantenimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+
+--
+-- AUTO_INCREMENT de la tabla `proveedores`
+--
+ALTER TABLE `proveedores`
+  MODIFY `idproveedor` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `respuesta`
