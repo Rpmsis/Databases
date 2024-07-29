@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-07-2024 a las 22:10:05
+-- Tiempo de generación: 29-07-2024 a las 16:33:33
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 7.4.33
 
@@ -32,7 +32,8 @@ CREATE TABLE `actividades` (
   `actividad` varchar(100) NOT NULL,
   `fecha` varchar(50) NOT NULL,
   `kg` float NOT NULL,
-  `material` varchar(50) NOT NULL,
+  `familia` varchar(50) NOT NULL,
+  `producto` varchar(50) NOT NULL,
   `ubicacion` varchar(100) NOT NULL,
   `timestandar` int(100) NOT NULL,
   `hora` int(20) NOT NULL,
@@ -43,17 +44,9 @@ CREATE TABLE `actividades` (
 -- Volcado de datos para la tabla `actividades`
 --
 
-INSERT INTO `actividades` (`idactividades`, `actividad`, `fecha`, `kg`, `material`, `ubicacion`, `timestandar`, `hora`, `minutos`) VALUES
-(4, 'FFFF', '2024-07-12', 43545, 'TEJOS 316', 'MONDELEZ', 150, 2, 30),
-(5, 'gggg', '2024-07-12', 3232, 'TEJOS 316', 'MONDELEZ', 340, 5, 40),
-(6, 'ddfff', '2024-07-12', 444, 'TEJOS 316', 'MONDELEZ', 345, 5, 45),
-(7, 'fff', '2024-07-12', 3334340000, 'TEJOS 316', 'MONDELEZ', 405, 6, 45),
-(8, 'dfvdfvdf', '2024-07-12', 23322, 'ALMACÉN 1', 'FISHER', 182, 3, 2),
-(9, 'ggggg', '2024-07-12', 344343, 'TEJOS 316', 'MONDELEZ', 366, 7, 7),
-(10, 'Probando solo minutos en una actividad', '2024-07-15', 2024, '2024', '1', 50, 0, 50),
-(11, 'Minutos', '2024-07-15', 1, 'ALMACÉN 1', 'MONDELEZ', 45, 0, 45),
-(12, 'Recolectar cartón ', '2024-07-15', 80, 'ALMACÉN 1', 'MONDELEZ', 600, 10, 0),
-(13, 'APLASTAR CARTÓN', '2024-07-15', 60, 'TEJOS 316', 'FISHER', 390, 6, 30);
+INSERT INTO `actividades` (`idactividades`, `actividad`, `fecha`, `kg`, `familia`, `producto`, `ubicacion`, `timestandar`, `hora`, `minutos`) VALUES
+(37, 'LIMPIAR CONTENEDOR DEL PLÁSTICO', '2024-07-24', 0, 'NA', 'NA', 'FISHER', 30, 0, 30),
+(38, 'LIMPIAR ALUMINIO DE MAGNA', '2024-07-24', 400, 'ALUMINIO', 'ALUMINIO20', 'MONDELEZ', 120, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -72,12 +65,72 @@ CREATE TABLE `activosfijos` (
 --
 
 INSERT INTO `activosfijos` (`idActfijos`, `folioActivo`, `Fcreacion`) VALUES
-(164, '16072401', '2024-07-16'),
-(165, '16072402', '2024-07-16'),
-(166, '16072403', '2024-07-16'),
-(167, '16072404', '2024-07-16'),
-(168, '16072405', '2024-07-16'),
-(169, '17072401', '2024-07-17');
+(199, '23072401', '2024-07-23'),
+(200, '23072402', '2024-07-23'),
+(201, '23072403', '2024-07-23'),
+(202, '23072404', '2024-07-23'),
+(203, '23072405', '2024-07-23'),
+(204, '23072406', '2024-07-23'),
+(205, '24072401', '2024-07-24'),
+(206, '24072402', '2024-07-24'),
+(207, '24072403', '2024-07-24');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `asigactivi`
+--
+
+CREATE TABLE `asigactivi` (
+  `idasigactivi` int(11) NOT NULL,
+  `fechacreacion` varchar(50) NOT NULL,
+  `responsable` varchar(50) NOT NULL,
+  `fechainicio` varchar(50) NOT NULL,
+  `empresa` varchar(100) NOT NULL,
+  `idactividad` int(100) NOT NULL,
+  `status` varchar(50) NOT NULL,
+  `motivo` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `asigactivi`
+--
+
+INSERT INTO `asigactivi` (`idasigactivi`, `fechacreacion`, `responsable`, `fechainicio`, `empresa`, `idactividad`, `status`, `motivo`) VALUES
+(34, '2024-07-24', 'MARIA EUGENIA RAMIREZ VELEZ', '2024-07-24', 'FISHER', 37, 'INACTIVO', 'ESTA LLOVIENDO'),
+(35, '2024-07-24', 'MARIA EUGENIA RAMIREZ VELEZ', '2024-07-29', 'FISHER', 37, '', ''),
+(36, '2024-07-24', 'MIGUEL DE LA CRUZ PUEBLITA', '2024-07-24', 'MONDELEZ', 38, '', ''),
+(37, '2024-07-24', 'MIGUEL DE LA CRUZ PUEBLITA', '2024-08-07', 'MONDELEZ', 38, '', ''),
+(38, '2024-07-24', 'MIGUEL DE LA CRUZ PUEBLITA', '2024-07-27', 'MONDELEZ', 38, '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `compras`
+--
+
+CREATE TABLE `compras` (
+  `idcompras` int(11) NOT NULL,
+  `folioActivo` varchar(100) NOT NULL,
+  `fecha` varchar(100) NOT NULL,
+  `proveedor` varchar(100) NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `costo` float NOT NULL,
+  `oc` varchar(100) NOT NULL,
+  `codigobarras` varchar(100) NOT NULL,
+  `descrip` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `compras`
+--
+
+INSERT INTO `compras` (`idcompras`, `folioActivo`, `fecha`, `proveedor`, `cantidad`, `costo`, `oc`, `codigobarras`, `descrip`) VALUES
+(30, 'C27072401', '2024-07-27', 'Ejemplo2', 50, 10, 'compra01', '7501015205778', 'BORRADOR PARA LAPIZ'),
+(31, 'C27072401', '2024-07-27', 'Ejemplo2', 20, 4.45, 'COMPRA02', '7501015205778', 'BORRADOR PARA LAPIZ'),
+(32, 'C27072402', '2024-07-27', 'Ejemplo1', 10, 10, 'compra01', '7872570980418', 'LIBRETA CUADRICULADA TAMAÑO PROFECIONAL'),
+(33, 'C27072403', '2024-07-27', 'Ejemplo2', 10, 5, 'COMPRA1', '7702111299948', 'LIBRETA PROFESIONAL TAMAÑO PROFECIONAL DE RAYAS'),
+(34, 'C27072404', '2024-07-27', 'Ejemplo2', 10, 5, 'FFFF', '6953070912077', 'HDGDGD');
 
 -- --------------------------------------------------------
 
@@ -86,34 +139,26 @@ INSERT INTO `activosfijos` (`idActfijos`, `folioActivo`, `Fcreacion`) VALUES
 --
 
 CREATE TABLE `consumibles` (
-  `idconsumible` int(11) NOT NULL,
+  `idconsumibles` int(11) NOT NULL,
   `folioActivo` varchar(100) NOT NULL,
   `fecha` varchar(100) NOT NULL,
   `unidadmedida` varchar(100) NOT NULL,
-  `enteros` int(11) NOT NULL,
-  `fracciones` int(11) NOT NULL,
-  `canestandar` int(250) NOT NULL,
+  `cantidad` int(100) NOT NULL,
+  `costo` float NOT NULL,
   `tipo` varchar(100) NOT NULL,
-  `descripcion` varchar(250) NOT NULL
+  `descripcion` varchar(250) NOT NULL,
+  `codigobarras` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `consumibles`
 --
 
-INSERT INTO `consumibles` (`idconsumible`, `folioActivo`, `fecha`, `unidadmedida`, `enteros`, `fracciones`, `canestandar`, `tipo`, `descripcion`) VALUES
-(5, 'C15072401', '2024-07-15', 'Piezas', 40, 0, 40, 'Escobas', 'Para pateo'),
-(6, 'C15072402', '2024-07-15', 'Piezas', 40, 0, 40, 'Escobas', 'Para pateo'),
-(7, 'C15072403', '2024-07-15', 'Piezas', 40, 0, 40, 'Escobas', 'Para pateo'),
-(8, 'C15072404', '2024-07-15', 'Piezas', 40, 0, 40, 'Escobas', 'Para pateo'),
-(9, 'C15072405', '2024-07-15', 'Piezas', 40, 0, 40, 'Escobas', 'Para pateo'),
-(10, 'C15072406', '2024-07-15', 'Piezas', 40, 0, 40, 'Escobas', 'Para pateo'),
-(11, 'C15072407', '2024-07-15', 'Piezas', 40, 0, 40, 'Escobas', 'Para pateo'),
-(12, 'C15072408', '2024-07-15', 'Piezas', 40, 0, 40, 'Escobas', 'Para pateo'),
-(13, 'C15072409', '2024-07-15', 'Piezas', 40, 0, 40, 'Escobas', 'Para pateo'),
-(14, 'C15072410', '2024-07-15', 'Piezas', 40, 0, 40, 'Escobas', 'Para pateo'),
-(15, 'C15072411', '2024-07-15', 'Piezas', 40, 0, 40, 'Escobas', 'Para pateo'),
-(16, 'C15072412', '2024-07-15', 'Litros', 2, 500, 2500, 'Jabon liquido', 'Para manos');
+INSERT INTO `consumibles` (`idconsumibles`, `folioActivo`, `fecha`, `unidadmedida`, `cantidad`, `costo`, `tipo`, `descripcion`, `codigobarras`) VALUES
+(18, 'C27072401', '2024-07-27', 'PIEZAS', 2, 4.45, 'PAPELERIA', 'GOMA', '7501015205778'),
+(19, 'C27072402', '2024-07-27', 'PIEZAS', 10, 10, 'PAPELERIA', 'LIBRETA', '7872570980418'),
+(20, 'C27072403', '2024-07-27', 'PIEZAS', 10, 5, 'PAPELERIA', 'LIBRETA PROFECIONAL', '7702111299948'),
+(21, 'C27072404', '2024-07-27', 'LITROS', 10, 5, 'PAPELERIA', 'GOMA', '6953070912077');
 
 -- --------------------------------------------------------
 
@@ -200,29 +245,9 @@ CREATE TABLE `insumos` (
 --
 
 INSERT INTO `insumos` (`IdInsumos`, `folioInsumos`, `F_creacion`, `tipoAct`, `F_alta`, `descrip`, `proveedor`, `folioOC`, `monto`, `F_adqui`, `Numserie`) VALUES
-(69, '16072401', '2024-07-16', 'VEHÍCULOS', '2024-07-16', 'gfgfgfg', 'Ejemplo1', '5555', '4444', '2024-07-16', '444444'),
-(70, '16072402', '2024-07-16', 'HERRAMIENTA', '2024-07-16', '5555555555555', 'Ejemplo1', '5555', '5555', '2024-07-16', '55555'),
-(71, '16072403', '2024-07-16', 'MONTACARGAS', '2024-07-24', 'ffdfdfd', 'Ejemplo1', '7', '5', '2024-07-18', '6'),
-(72, '16072404', '2024-07-16', 'MONTACARGAS', '2024-07-16', 'Holaaa probando la funcionalidad de registro de informacion en la tabla de insumos', 'Ejemplo1', '99999', '45', '2024-07-16', '45'),
-(73, '16072405', '2024-07-16', 'MAQUINARIA', '2024-07-16', 'probando', 'Ejemplo2', '3334444545', '5456565', '2024-07-16', '5667y'),
-(74, '17072401', '2024-07-17', 'VEHÍCULOS', '2024-07-17', 'gvrfgbrg', 'Ejemplo2', 'ttttt', '767', '2024-07-17', '4545');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `inventario`
---
-
-CREATE TABLE `inventario` (
-  `idinventario` int(11) NOT NULL,
-  `folioActivo` varchar(100) NOT NULL,
-  `unidadmedida` varchar(100) NOT NULL,
-  `enteros` int(11) NOT NULL,
-  `fracciones` int(11) NOT NULL,
-  `canestandar` int(11) NOT NULL,
-  `responsable` varchar(100) NOT NULL,
-  `tipo` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+(78, '24072401', '2024-07-24', 'MAQUINARIA', '2024-07-24', 'ffffff', 'Ejemplo1', 'ffff', '45', '2024-07-24', '455'),
+(79, '24072402', '2024-07-24', 'VEHÍCULOS', '2024-07-24', 'rferfe', 'Ejemplo2', '344', '34', '2024-07-24', '32324'),
+(80, '24072403', '2024-07-24', 'MONTACARGAS', '2024-07-24', 'rrrrtttttss', 'Ejemplo2', '444', '45', '2024-07-24', '345');
 
 -- --------------------------------------------------------
 
@@ -253,10 +278,69 @@ CREATE TABLE `mantenimiento` (
 --
 
 INSERT INTO `mantenimiento` (`idMantenimiento`, `folioMant`, `falta`, `fabricacion`, `tipoAct`, `modelo`, `capacidad`, `clasificacion`, `nmotor`, `tipocontmate`, `especificacion`, `marca`, `descripadi`, `descripgen`, `idubicacion`) VALUES
-(89, '16072404', '2024-07-16', 'NA', 'MONTACARGAS', 'gggg', '34x84', 'B', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'TENNECO'),
-(90, '16072406', '2024-07-16', 'NA', 'MAQUINARIA', 'gggg', 'ggggg', 'B', 'NA', 'NA', 'NA', 'NA', 'NA', 'gggg', 'MONDELEZ'),
-(91, '17072401', '2024-07-17', 'NA', 'MAQUINARIA', 'ggg', 'ggg', 'B', 'NA', 'NA', 'NA', 'NA', 'NA', 'gggg', 'MONDELEZ'),
-(92, '16072405', '2024-07-17', 'NA', 'MAQUINARIA', 'gggg', '34x59', 'B', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'MONDELEZ');
+(126, '23072401', '2024-07-23', 'NA', 'INFRAESTRUCTURA', 'NA', 'NA', 'B', 'NA', 'NA', 'NA', 'NA', 'ggggg', 'gggg', 'FISHER'),
+(127, '23072402', '2024-07-23', '2024-07-23', 'EQUIPOS DE CONTENCIÓN', 'NA', '34x45', 'B', 'NA', 'CARRO TRANSPORTADOR', 'DRENAJES', 'NA', 'NA', 'fgggfgf', 'MONDELEZ'),
+(128, '23072403', '2024-07-23', 'NA', 'MAQUINARIA', 'ervbtr', '4556x45', 'A', 'NA', 'NA', 'NA', 'NA', 'NA', 'efvfgbfg', 'MONDELEZ'),
+(129, '23072404', '2024-07-23', 'NA', 'MAQUINARIA', 'fgbfgbf', '45x45', 'A', 'NA', 'NA', 'NA', 'NA', 'NA', 'gbfgbfg', 'MONDELEZ'),
+(130, '23072405', '2024-07-23', '2024-07-23', 'EQUIPOS PARA MANEJO DE MATERIALES', 'NA', 'e45cx345', 'B', 'NA', 'CARRO TRANSPORTADOR', 'DRENAJES', 'NA', 'NA', 'ffgbfg', 'MONDELEZ'),
+(131, '23072406', '2024-07-23', 'NA', 'INFRAESTRUCTURA', 'NA', 'NA', 'B', 'NA', 'NA', 'NA', 'NA', 'Holi', 'Holi', 'FISHER'),
+(132, '24072403', '2024-07-24', 'NA', 'MONTACARGAS', 'ggg', '46x34', 'B', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'MONDELEZ');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `material`
+--
+
+CREATE TABLE `material` (
+  `idmaterial` int(11) NOT NULL,
+  `fecha` varchar(50) NOT NULL,
+  `familia` varchar(50) NOT NULL,
+  `producto` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `material`
+--
+
+INSERT INTO `material` (`idmaterial`, `fecha`, `familia`, `producto`) VALUES
+(21, '2024-07-22', 'ALUMINIO', 'ALUMINIO1'),
+(22, '2024-07-22', 'MADERA', 'M1'),
+(23, '2024-07-22', 'MADERA', 'M2'),
+(24, '2024-07-22', 'MADERA', 'M3'),
+(25, '2024-07-22', 'CARTÓN', 'CAR2'),
+(26, '2024-07-22', 'INOX 316', 'AC2'),
+(27, '2024-07-22', 'ALUMINIO', 'ALUMINIO5'),
+(28, '2024-07-24', 'PLÁSTICO', 'PLASTICO1'),
+(29, '2024-07-24', 'CARTÓN', 'CARTON1'),
+(30, '2024-07-24', 'CARTÓN', 'CARTON3'),
+(31, '2024-07-24', 'CARTÓN', 'CARTON9'),
+(32, '2024-07-24', 'ALUMINIO', 'ALUMINIO20');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `movimientos`
+--
+
+CREATE TABLE `movimientos` (
+  `idmovimientos` int(11) NOT NULL,
+  `folioActivo` varchar(100) NOT NULL,
+  `fecha` varchar(100) NOT NULL,
+  `costo` float NOT NULL,
+  `cantidad` varchar(100) NOT NULL,
+  `responsable` varchar(100) NOT NULL,
+  `area` varchar(100) NOT NULL,
+  `tipo` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `movimientos`
+--
+
+INSERT INTO `movimientos` (`idmovimientos`, `folioActivo`, `fecha`, `costo`, `cantidad`, `responsable`, `area`, `tipo`) VALUES
+(6, 'C27072401', '2024-07-27', 4.45, '60', 'BRISA AUZA ROSAS', 'TECNOLOGÍAS DE LA INFORMACIÓN', 'PAPELERIA'),
+(7, 'C27072401', '2024-07-27', 4.45, '8', 'BRISA AUZA ROSAS', 'TECNOLOGÍAS DE LA INFORMACIÓN', 'PAPELERIA');
 
 -- --------------------------------------------------------
 
@@ -455,6 +539,45 @@ INSERT INTO `unidad` (`idUnidad`, `folioActivo`, `Fcreacion`, `Falta`, `nombre`)
 (12, '26062412', '2024-06-26', '2024-06-26', 'Camion12'),
 (13, '26062413', '2024-06-26', '2024-06-26', 'Camion13');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarioprov`
+--
+
+CREATE TABLE `usuarioprov` (
+  `idusuarioprov` int(11) NOT NULL,
+  `foliorpm` varchar(100) NOT NULL,
+  `fecha` varchar(20) NOT NULL,
+  `nombre` varchar(250) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `movil` varchar(50) NOT NULL,
+  `tel` varchar(30) NOT NULL,
+  `rsocial` varchar(50) NOT NULL,
+  `rfc` varchar(20) NOT NULL,
+  `rfiscal` varchar(50) NOT NULL,
+  `cfdi` varchar(100) NOT NULL,
+  `fpago` varchar(50) NOT NULL,
+  `calle` varchar(100) NOT NULL,
+  `next` varchar(50) NOT NULL,
+  `colonia` varchar(100) NOT NULL,
+  `ninten` varchar(50) NOT NULL,
+  `municipio` varchar(100) NOT NULL,
+  `ciudad` varchar(100) NOT NULL,
+  `cpostal` int(50) NOT NULL,
+  `cnombre` varchar(100) NOT NULL,
+  `cemail` varchar(100) NOT NULL,
+  `cmovil` varchar(50) NOT NULL,
+  `ctel` varchar(50) NOT NULL,
+  `beneficiario` varchar(100) NOT NULL,
+  `nombanco` varchar(100) NOT NULL,
+  `clabe` varchar(50) NOT NULL,
+  `cuenta` varchar(100) NOT NULL,
+  `refpago` varchar(100) NOT NULL,
+  `credito` varchar(10) NOT NULL,
+  `cdias` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Índices para tablas volcadas
 --
@@ -472,10 +595,22 @@ ALTER TABLE `activosfijos`
   ADD PRIMARY KEY (`idActfijos`);
 
 --
+-- Indices de la tabla `asigactivi`
+--
+ALTER TABLE `asigactivi`
+  ADD PRIMARY KEY (`idasigactivi`);
+
+--
+-- Indices de la tabla `compras`
+--
+ALTER TABLE `compras`
+  ADD PRIMARY KEY (`idcompras`);
+
+--
 -- Indices de la tabla `consumibles`
 --
 ALTER TABLE `consumibles`
-  ADD PRIMARY KEY (`idconsumible`);
+  ADD PRIMARY KEY (`idconsumibles`);
 
 --
 -- Indices de la tabla `forms`
@@ -494,6 +629,18 @@ ALTER TABLE `insumos`
 --
 ALTER TABLE `mantenimiento`
   ADD PRIMARY KEY (`idMantenimiento`);
+
+--
+-- Indices de la tabla `material`
+--
+ALTER TABLE `material`
+  ADD PRIMARY KEY (`idmaterial`);
+
+--
+-- Indices de la tabla `movimientos`
+--
+ALTER TABLE `movimientos`
+  ADD PRIMARY KEY (`idmovimientos`);
 
 --
 -- Indices de la tabla `proveedores`
@@ -526,6 +673,12 @@ ALTER TABLE `unidad`
   ADD PRIMARY KEY (`idUnidad`);
 
 --
+-- Indices de la tabla `usuarioprov`
+--
+ALTER TABLE `usuarioprov`
+  ADD PRIMARY KEY (`idusuarioprov`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -533,19 +686,31 @@ ALTER TABLE `unidad`
 -- AUTO_INCREMENT de la tabla `actividades`
 --
 ALTER TABLE `actividades`
-  MODIFY `idactividades` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idactividades` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de la tabla `activosfijos`
 --
 ALTER TABLE `activosfijos`
-  MODIFY `idActfijos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=170;
+  MODIFY `idActfijos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=208;
+
+--
+-- AUTO_INCREMENT de la tabla `asigactivi`
+--
+ALTER TABLE `asigactivi`
+  MODIFY `idasigactivi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+
+--
+-- AUTO_INCREMENT de la tabla `compras`
+--
+ALTER TABLE `compras`
+  MODIFY `idcompras` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de la tabla `consumibles`
 --
 ALTER TABLE `consumibles`
-  MODIFY `idconsumible` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `idconsumibles` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `forms`
@@ -557,19 +722,31 @@ ALTER TABLE `forms`
 -- AUTO_INCREMENT de la tabla `insumos`
 --
 ALTER TABLE `insumos`
-  MODIFY `IdInsumos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `IdInsumos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT de la tabla `mantenimiento`
 --
 ALTER TABLE `mantenimiento`
-  MODIFY `idMantenimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `idMantenimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
+
+--
+-- AUTO_INCREMENT de la tabla `material`
+--
+ALTER TABLE `material`
+  MODIFY `idmaterial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+
+--
+-- AUTO_INCREMENT de la tabla `movimientos`
+--
+ALTER TABLE `movimientos`
+  MODIFY `idmovimientos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedores`
 --
 ALTER TABLE `proveedores`
-  MODIFY `idproveedor` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idproveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `respuesta`
@@ -594,6 +771,12 @@ ALTER TABLE `ubicacion`
 --
 ALTER TABLE `unidad`
   MODIFY `idUnidad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarioprov`
+--
+ALTER TABLE `usuarioprov`
+  MODIFY `idusuarioprov` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
